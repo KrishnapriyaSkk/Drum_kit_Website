@@ -25,17 +25,30 @@ function sound(e)
               break;
   }
 }
+function button_animation(key){
+
+var button_active = document.querySelector("."+key);
+
+button_active.classList.add("pressed");
+
+setTimeout(function()
+{
+  button_active.classList.remove("pressed");
+},100);
+}
 
 for(var i = 0; i < 7; i++)
 {
   document.querySelectorAll(".drum")[i].addEventListener("click", function(){
     var buttonhtml = this.innerHTML;
-    sound(buttonhtml)
+    sound(buttonhtml);
+    button_animation(buttonhtml);
   });
 
 }
 document.addEventListener("keydown", function(event)
 {
   sound(event.key);
+  button_animation(event.key);
 }
 );
